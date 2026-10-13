@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yandex Disk Bulk Downloader</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="popup">
+    <header>
+      <div class="brand">BD</div>
+      <div>
+        <h1>Bulk Downloader</h1>
+        <p class="subtitle">Массовая загрузка файлов</p>
+      </div>
+      <span class="version">v0.7.0</span>
+    </header>
+
+    <section class="panel open-folder">
+      <details class="collapse" open>
+        <summary>
+          <span class="eyebrow">Открытый каталог</span>
+        </summary>
+        <div id="status" role="status" aria-live="polite">Проверяем вкладку…</div>
+        <div id="folder" class="folder"></div>
+        <div class="stats">
+          <div><span>Всего</span><strong id="count">—</strong></div>
+          <div><span>Завершено</span><strong id="complete">—</strong></div>
+          <div><span>Осталось</span><strong id="pending">—</strong></div>
+        </div>
+        <div class="stats compact">
+          <div><span>В DOM</span><strong id="visible-count">—</strong></div>
+          <div><span>Ошибки / неизвестно</span><strong id="problems">—</strong></div>
+          <div><span>Сбор, шагов</span><strong id="steps">—</strong></div>
+        </div>
+        <div class="buttons">
+          <button id="collect" type="button" class="secondary">Собрать файлы</button>
+          <button id="stop-scan" type="button" class="secondary" disabled>Стоп сбор</button>
+        </div>
+      </details>
+    </section>
+
+    <section class="panel settings-panel">
+      <details class="collapse" open>
+        <summary>
+          <span class="eyebrow">Настройки скачивания</span>
+        </summary>
+        <label class="check-row"><input type="checkbox" id="hide-chrome-ui" checked> Скрывать панель Chrome во время скачивания</label>
+        <label class="check-row"><input type="checkbox" id="erase-interrupted"> Удалять из истории Chrome прерванные загрузки расширения</label>
+        <label class="folder-label" for="download-folder">Подпапка стандартной директории загрузок Chrome</label>
+        <input id="download-folder" type="text" placeholder="Например: YandexDisk/Фото" autocomplete="off" spellcheck="false">
+        <div class="buttons settings-buttons">
+          <button id="save-settings" type="button" class="secondary">Сохранить настройки</button>
+          <button id="chrome-download-settings" type="button" class="secondary">Выбрать основную папку</button>
+        </div>
+        <div class="scheduler-reason" id="ui-mode"></div>
+      </details>
+    </section>
+
+    <section class="panel download-panel">
+      <details class="collapse" open>
+        <summary>
+          <span class="eyebrow">Управление скачиванием</span>
+        </summary>
+        <div id="api-status" class="scheduler-reason">Проверяем API-сессию…</div>
+        <div id="download-status" class="download-status">Очередь ещё не запущена</div>
+        <div id="concurrency" class="concurrency"></div>
+        <div id="scheduler-reason" class="scheduler-reason"></div>
+        <div id="active-name" class="active-name"></div>
+        <ul id="active-downloads" class="active-downloads" aria-label="Текущие загрузки"></ul>
+        <div class="buttons download-actions">
+          <button id="start-all" type="button">Скачать все</button>
+        </div>
+        <div class="buttons">
+          <button id="pause" type="button" class="secondary" disabled>Пауза после файла</button>
+          <button id="retry" type="button" class="secondary" disabled>Повторить все ошибки</button>
+        </div>
+        <div class="buttons stop-row">
+          <button id="stop-downloads" type="button" class="danger" disabled>■ Остановить всё и отменить загрузки</button>
+        </div>
+      </details>
+    </section>
+
+    <section class="list-section">
+      <div class="list-heading">
+        <h2>Состояния файлов</h2>
+        <button type="button" class="text-button" id="clear">Очистить очередь</button>
+      </div>
+      <div class="list-meta" id="list-meta">Ожидаем данные</div>
+      <div class="log-actions">
+        <button id="export-log" type="button" class="secondary">Экспорт CSV</button>
+        <button id="clear-log" type="button" class="secondary">Очистить журнал</button>
+        <span id="log-count" class="scheduler-reason"></span>
+      </div>
+      <div class="filters" role="group" aria-label="Фильтр файлов">
+        <button id="filter-all" class="filter active" type="button">Все файлы</button>
+        <button id="filter-errors" class="filter" type="button">Только ошибки</button>
+      </div>
+      <ol id="files"></ol>
+      <div class="pagination">
+        <button id="page-prev" type="button" class="secondary">← Назад</button>
+        <span id="page-label">Страница 1 из 1</span>
+        <button id="page-next" type="button" class="secondary">Вперёд →</button>
+      </div>
+      <p class="hint" id="more" hidden></p>
+    </section>
+    <footer>Независимое расширение · не связано с Яндексом</footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Bulk Downloader for Ya Disk",
+  "short_name": "Disk Bulk",
+  "version": "0.7.0",
+  "description": "Скачивание файлов из личного Яндекс Диска: очередь, прогресс, ошибки и экспорт CSV.",
+  "permissions": [
+    "storage",
+    "downloads",
+    "alarms",
+    "tabs",
+    "webRequest",
+    "downloads.ui"
+  ],
+  "host_permissions": [
+    "https://disk.yandex.ru/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Bulk Downloader for Ya Disk",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://disk.yandex.ru/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

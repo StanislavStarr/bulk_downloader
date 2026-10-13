@@ -1,0 +1,133 @@
+:root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+* { box-sizing: border-box; }
+body { width: 376px; margin: 0; color: #f3f4f6; background: #111319; }
+.popup { padding: 17px; }
+header { display: flex; align-items: center; gap: 11px; margin-bottom: 17px; }
+.brand { display: grid; place-items: center; min-width: 42px; height: 42px; background: #e53935; color: white; font-weight: 800; font-size: 17px; border-radius: 12px; }
+h1 { margin: 0 0 3px; font-size: 17px; letter-spacing: -.2px; }
+.subtitle, .hint, footer { color: #a9afbd; font-size: 12px; }
+.subtitle { margin: 0; }
+.version { font-size: 11px; color: #9fa6b5; margin-left: auto; }
+.panel { padding: 14px; border: 1px solid #2a303b; background: #1b1f28; border-radius: 14px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .06em; color: #929bab; font-size: 10px; margin-bottom: 7px; }
+#status { font-size: 13px; line-height: 1.4; min-height: 19px; overflow-wrap: anywhere; font-weight: 650; }
+#status.error { color: #ff9a9a; }
+#status.success { color: #8cdfab; }
+#status.wait { color: #f2c77c; }
+.folder { font-size: 11px; color: #a9afbd; margin-top: 3px; word-break: break-all; max-height: 30px; overflow: hidden; }
+.stats { margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.stats div { border: 1px solid #303641; padding: 9px 6px; border-radius: 9px; text-align: center; }
+.stats span { display: block; color: #a9afbd; font-size: 10px; }
+.stats strong { display: block; margin-top: 5px; font-size: 20px; font-variant-numeric: tabular-nums; }
+.buttons { display: flex; gap: 7px; }
+button { border: 0; border-radius: 9px; padding: 11px; font-weight: 700; color: #fff; background: #d83935; cursor: pointer; font-size: 12px; }
+.buttons button { flex: 1; }
+button:disabled { opacity: .45; cursor: default; }
+button:hover:not(:disabled) { filter: brightness(1.08); }
+button.secondary { background: #383f4d; }
+.hint { line-height: 1.55; margin: 12px 0 0; }
+.list-section { margin-top: 16px; }
+.list-heading { display: flex; align-items: center; justify-content: space-between; }
+h2 { margin: 0; font-size: 13px; }
+.text-button { width: auto; padding: 5px 7px; color: #b8c0cf; background: transparent; font-size: 11px; }
+.list-meta { font-size: 11px; color: #969fad; margin: 7px 0; }
+ol { list-style: decimal; padding: 0 0 0 22px; margin: 0; max-height: 270px; overflow: auto; }
+li { font-size: 12px; color: #d3d8df; line-height: 1.5; padding: 6px 0; border-bottom: 1px solid #272c35; overflow-wrap: anywhere; }
+.file-name { display: inline; }
+.file-state { display: inline-block; font-size: 10px; padding-left: 5px; color: #84c6a0; }
+footer { text-align: center; margin: 16px 0 2px; }
+.download-panel { margin-top: 12px; }
+.open-folder .collapse,
+.settings-panel .collapse,
+.download-panel .collapse { margin: -2px 0; }
+.open-folder summary,
+.settings-panel summary,
+.download-panel summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: -4px -4px 0;
+  padding: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.open-folder summary::-webkit-details-marker,
+.settings-panel summary::-webkit-details-marker,
+.download-panel summary::-webkit-details-marker { display: none; }
+.open-folder summary:hover,
+.settings-panel summary:hover,
+.download-panel summary:hover { background: #242933; }
+.open-folder summary .eyebrow,
+.settings-panel summary .eyebrow,
+.download-panel summary .eyebrow { margin-bottom: 0; }
+.open-folder summary::after,
+.settings-panel summary::after,
+.download-panel summary::after {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: -4px;
+  border-right: 1.5px solid #929bab;
+  border-bottom: 1.5px solid #929bab;
+  transform: rotate(-45deg);
+  transition: transform .15s ease, margin-top .15s ease;
+}
+.open-folder details[open] summary::after,
+.settings-panel details[open] summary::after,
+.download-panel details[open] summary::after {
+  margin-top: 2px;
+  transform: rotate(45deg);
+}
+.download-status { color: #f4d08e; font-weight: 700; font-size: 12px; overflow-wrap: anywhere; }
+.active-name { color: #ddd; font-size: 12px; overflow-wrap: anywhere; margin: 8px 0; }
+progress { width: 100%; height: 12px; accent-color: #79cea5; }
+.download-actions { margin: 12px 0 7px; }
+.compact { margin-top: -8px; }
+.compact strong { font-size: 14px; }
+.warn { color: #e6c28b; }
+.state-complete { color: #78d5ac; }
+.state-in_progress { color: #eec477; }
+.state-awaiting, .state-preparing { color: #eec477; }
+.state-unconfirmed, .state-failed, .state-interrupted { color: #fa9999; }
+.state-pending { color: #a9afbd; }
+.file-error { color: #fa9999; font-size: 10px; margin-top: 3px; }
+.diagnostics { font-size: 10px; color: #d7bd8a; line-height: 1.5; margin-top: 12px; }
+
+.filters { display: flex; gap: 6px; margin: 10px 0 8px; }
+.filters .filter { background: #303641; color: #bbc2d0; padding: 7px 10px; font-size: 11px; }
+.filters .filter.active { color: #fff; background: #b13532; }
+.file-retry { display: block; width: fit-content; margin: 5px 0 0; padding: 5px 9px; background: #394452; color: #f0f2f6; font-size: 10px; }
+.file-retry:disabled { opacity: .4; }
+
+.concurrency { margin-top: 7px; font-size: 11px; color: #b9c5d5; }
+.active-downloads { padding-left: 0; list-style: none; max-height: 240px; overflow: auto; }
+.active-download-row { padding: 8px 0; border-bottom: 1px solid #323946; }
+.active-download-name { font-size: 12px; color: #edf0f4; font-weight: 650; }
+.active-download-detail { margin: 4px 0 5px; font-size: 10px; color: #abb4c3; }
+.active-download-row progress { width: 100%; height: 8px; }
+
+button.danger { background: #9e2934; border: 1px solid #d15a64; }
+.scheduler-reason { margin-top: 5px; font-size: 11px; color: #d4b97e; }
+.state-canceled { color: #f9a7a7; }
+.stop-row { margin-top: 7px; }
+
+.settings-panel { margin-top: 12px; }
+.check-row { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: #d8dce4; margin: 10px 0; line-height: 1.45; }
+.check-row input { accent-color: #d83935; width: 15px; height: 15px; flex-shrink: 0; margin: 0; }
+.folder-label { color: #c7cdd6; display: block; font-size: 11px; margin: 13px 0 5px; }
+#download-folder { background: #141820; color: #fff; width: 100%; padding: 10px; border: 1px solid #474c59; border-radius: 9px; outline: none; font: inherit; font-size: 12px; }
+#download-folder:focus { border-color: #cb4e4b; }
+.settings-buttons { margin-top: 10px; }
+.settings-buttons button { min-width: 0; font-size: 11px; padding: 9px 6px; }
+.pagination { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-top: 12px; }
+.pagination button { font-size: 11px; padding: 8px; background: #383f4d; }
+.pagination span { font-size: 11px; color: #bcc3cf; white-space: nowrap; }
+.pagination button:disabled { opacity: .3; }
+
+.log-actions { display: flex; align-items: center; gap: 7px; margin: 9px 0; }
+.log-actions button { flex: 1; }
+.log-actions #log-count { flex: 0 0 auto; white-space: nowrap; }
