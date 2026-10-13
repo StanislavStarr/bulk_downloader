@@ -2,7 +2,7 @@
 
 **Продукт:** Bulk Downloader for Ya Disk (независимое расширение; не связано с Яндексом).  
 **Редакция:** 13 октября 2026 г.  
-**Контакт:** @stanislav_sinitsynn
+**Контакт:** stanislav.sinitsyn.work@gmail.com
 
 ## Какие данные обрабатываются
 
@@ -34,4 +34,4 @@
 
 This independent extension downloads files from the user's own Yandex Disk account. It locally processes folder URLs, file names, download states, and temporary authenticated-session parameters (`sk`, `connection_id`) required for requests to Yandex Disk. Queue records, settings, and event logs remain in Chrome extension local storage; session values remain in session storage. No analytics, advertising, developer-operated backend, or transmission to the developer is used. Chrome downloads the requested files directly from Yandex services. Users can clear local queues and event logs separately. The extension is not affiliated with Yandex.
 
-**Developer contact:** @stanislav_sinitsynn
+**Developer contact:** stanislav.sinitsyn.work@gmail.com
